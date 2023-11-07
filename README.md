@@ -49,6 +49,7 @@ Testitav projekt: [Google](https://www.google.ee)
 
 ### Probleemid
 * Testimisel esines probleeme WebKit-iga, sest "Nõustu kõigiga" nupp polnud seal nähtav. Probleem oli selles, et WebKit-is oli leht inglise keeles, mujal aga eesti keeles. Selle lahendamiseks kasutasin lisasin ühe GET parameetri urli lõppu, seega sait, mida tegelikult külastasin oli `https://www.google.ee/?hl=et`.
+* Otsingu sooritamine ebaõnnestus WebKit-iga, sest Google kuvas reCaptcha märkeruudu otsingulehe asemel
 
 ### Testide kokkuvõta
 * TBD
