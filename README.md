@@ -1,6 +1,12 @@
 # Playwright testid
 Sooritasin UI testid [Google](https://www.google.ee) jaoks. Testides kontrollitakse veebirakenduse enamkasutatavaid otsingufunktsioone.
 
+## Testide käivitamine
+1. `cd <projekti juurkaust>`
+2. `npm install`
+3. `npx playwright test google.spec.js` (käsurea versioon)
+4. `npx playwright test google.spec.js --ui` (graafiline versioon)
+
 ## Testid
 1. Tavalise otsingu sooritamine
     * Küpsistega nõustumine - küpsistega nõustudes peaks veebilehe uuesti laadimisel aken mitte ilmuma
