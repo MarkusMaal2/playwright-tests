@@ -31,7 +31,7 @@ Testitav projekt: [Google](https://www.google.ee)
      2. Leiame üles "Pildid" siselingi ja klõpsame seda
      3. Leiame üles otsinguvälja
      4. Sisestame märksõna "Playwright" ja vajutame sisestusklahvi
-     5. Kontrollime, et lehekülje pealkirjas oleks märksõna ja otsinguväljal oleks sisestatud märksõna
+     5. Kontrollime, et lehekülje pealkirjas oleks sisestatud märksõna
      6. Veendume, et leheküljel oleks nähtaval vähemalt 10 pilti
 3. Otsing filtritega
    * Välistava filtri kasutamine - sisestades mingi märksõna ning jättes teatud märksõnad välja lisades neile "-" prefiksi, ei tohiks otsingulehele jääda tulemusi, mis sisaldavad välistatud märksõnu

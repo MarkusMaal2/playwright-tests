@@ -69,3 +69,33 @@ test.describe('Tavalise otsingu sooritamine', () => {
         await expect(page.getByLabel('Otsi', { exact: true })).not.toBeAttached();
     });
 })
+test.describe('Pildiotsing', () => {
+    test('klõpsates "Pildid" siselingil peaksime jõudma "Google pildid" lehele', async ({ page }) => {
+        // Külastame Google.com lehte ja veendume, et see on korrektselt laaditud, seejärel nõustume küpsistega klõpsates "Nõustu kõigiga" nuppu
+        await acceptCookies(page);
+        // Leiame üles "Pildid" siselingi ja klõpsame seda
+        await page.getByLabel('Piltide otsimine (avab uue vahelehe)').click();
+        // Veendume, et lehekülje pealkirjas oleks "Google pildid" ja "Otsige pildi järgi" nupp oleks nähtav
+        await expect(page).toHaveTitle(/Google pildid/);
+        await expect(page.getByLabel('Otsige pildi järgi')).toBeAttached();
+    })
+
+
+    test('sisestades mingisuguse märksõna, peaksid ilmuma sellele vastavad pildid', async ({ page }) => {
+        // Külastame Google.com lehte ja veendume, et see on korrektselt laaditud, seejärel nõustume küpsistega klõpsates "Nõustu kõigiga" nuppu
+        await acceptCookies(page);
+        // Leiame üles "Pildid" siselingi ja klõpsame seda
+        await page.getByLabel('Piltide otsimine (avab uue vahelehe)').click();
+        // Leiame üles otsinguvälja
+        await page.getByLabel('Otsi', { exact: true }).click();
+        // Sisestame märksõna "Playwright" ja vajutame sisestusklahvi
+        await page.getByLabel('Otsi', { exact: true }).fill('Playwright');
+        await page.waitForTimeout(500);
+        await page.keyboard.press('Enter');
+        // Kontrollime, et lehekülje pealkirjas oleks sisestatud märksõna
+        await expect(page).toHaveTitle(/Playwright – Google'i otsing/);
+        // Veendume, et leheküljel oleks nähtaval vähemalt 10 pilti
+        const images = await page.$$('img');
+        await assert.ok(images.length >= 10);
+    })
+})
