@@ -1,5 +1,5 @@
 # Playwright testid 
-Testitav projekt: [Google](https://www.google.com)
+Testitav projekt: [Google](https://www.google.ee)
 
 ## Testid
 1. Tavalise otsingu sooritamine
@@ -46,4 +46,9 @@ Testitav projekt: [Google](https://www.google.com)
      4. Kontrollime, et fraas oleks tulemuste lehel lisaks pealkirjale ja otsinguväljale ka tulemuste loetelus
 
 ## Tulemused
-TBD
+
+### Probleemid
+* Testimisel esines probleeme WebKit-iga, sest "Nõustu kõigiga" nupp polnud seal nähtav. Probleem oli selles, et WebKit-is oli leht inglise keeles, mujal aga eesti keeles. Selle lahendamiseks kasutasin lisasin ühe GET parameetri urli lõppu, seega sait, mida tegelikult külastasin oli `https://www.google.ee/?hl=et`.
+
+### Testide kokkuvõta
+* TBD
