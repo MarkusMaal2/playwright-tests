@@ -1,5 +1,5 @@
-# Playwright testid 
-Testitav projekt: [Google](https://www.google.ee)
+# Playwright testid
+Sooritasin UI testid [Google](https://www.google.ee) jaoks. Testides kontrollitakse veebirakenduse enamkasutatavaid otsingufunktsioone.
 
 ## Testid
 1. Tavalise otsingu sooritamine
@@ -49,7 +49,7 @@ Testitav projekt: [Google](https://www.google.ee)
 
 ### Probleemid
 * Testimisel esines probleeme WebKit-iga, sest "Nõustu kõigiga" nupp polnud seal nähtav. Probleem oli selles, et WebKit-is oli leht inglise keeles, mujal aga eesti keeles. Selle lahendamiseks kasutasin lisasin ühe GET parameetri urli lõppu, seega sait, mida tegelikult külastasin oli `https://www.google.ee/?hl=et`.
-* Otsingu sooritamine ebaõnnestus WebKit-iga, sest Google kuvas reCaptcha märkeruudu otsingulehe asemel
+* Otsingu sooritamine ebaõnnestus Playwright graafilises versioonis WebKit-iga, sest Google kuvas reCaptcha märkeruudu otsingulehe asemel
 * Välistava filtriga test ebaõnnestus mingil tundmatul põhjusel, välistavad märksõnad olid ikka otsingus
 
 ### Testide kokkuvõta
