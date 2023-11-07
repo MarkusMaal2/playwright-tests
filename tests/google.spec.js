@@ -99,3 +99,35 @@ test.describe('Pildiotsing', () => {
         await assert.ok(images.length >= 10);
     })
 })
+
+test.describe('Otsing filtritega', () => {
+    test('sisestades mingi märksõna ning jättes teatud märksõnad välja lisades neile "-" prefiksi, ei tohiks otsingulehele jääda tulemusi, mis sisaldavad välistatud märksõnu', async ({ page }) => {
+        // Külastame Google.com lehte ja veendume, et see on korrektselt laaditud, seejärel nõustume küpsistega klõpsates "Nõustu kõigiga" nuppu
+        await acceptCookies(page);
+        // Leiame üles otsinguvälja
+        await page.getByLabel('Otsi', { exact: true }).click();
+        // Sisestame märksõnad "windows -os -microsoft" ja vajutame sisestusklahvi
+        await page.getByLabel('Otsi', { exact: true }).fill('windows -os -microsoft');
+        await page.waitForTimeout(500);
+        await page.keyboard.press('Enter');
+        // Veendume, et leheküljel ei ole märksõnu "os" ja "microsoft" v.a. pealkirjas ja otsinguväljal
+        const osElements = await page.getByText(/os/i)
+        const microsoftElements = await page.getByText(/microsoft/i)
+        await expect(osElements).toHaveCount(1)
+        await expect(microsoftElements).toHaveCount(1)
+    })
+    test('sisestades märksõnad jutumärkide vahele, peaksid otsingulehel olevad tulemused sisaldama sisestatud tsitaati', async ({ page }) => {
+        // Külastame Google.com lehte ja veendume, et see on korrektselt laaditud, seejärel nõustume küpsistega klõpsates "Nõustu kõigiga" nuppu
+        await acceptCookies(page);
+        // Leiame üles otsinguvälja
+        await page.getByLabel('Otsi', { exact: true }).click();
+        // Sisestame jutumärkidega "The quick brown fox jumps over the lazy dog." ja vajutame sisestusklahvi
+        await page.getByLabel('Otsi', { exact: true }).fill('"The quick brown fox jumps over the lazy dog."');
+        await page.waitForTimeout(500);
+        await page.keyboard.press('Enter');
+        // Kontrollime, et fraas oleks tulemuste lehel lisaks pealkirjale ja otsinguväljale ka tulemuste loetelus
+        const foxElements = await page.getByText(/The quick brown fox jumps over the lazy dog./)
+        await expect(foxElements).not.toHaveCount(1)
+        await expect(foxElements).not.toHaveCount(0)
+    })
+})
