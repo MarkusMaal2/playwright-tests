@@ -45,5 +45,5 @@ Testitav projekt: [Google](https://www.google.com)
      3. Sisestame jutumärkidega "The quick brown fox jumps over the lazy dog." ja vajutame sisestusklahvi
      4. Kontrollime, et fraas oleks tulemuste lehel lisaks pealkirjale ja otsinguväljale ka tulemuste loetelus
 
-# Tulemused
+## Tulemused
 TBD
