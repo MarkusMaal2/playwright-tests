@@ -50,6 +50,14 @@ Testitav projekt: [Google](https://www.google.ee)
 ### Probleemid
 * Testimisel esines probleeme WebKit-iga, sest "Nõustu kõigiga" nupp polnud seal nähtav. Probleem oli selles, et WebKit-is oli leht inglise keeles, mujal aga eesti keeles. Selle lahendamiseks kasutasin lisasin ühe GET parameetri urli lõppu, seega sait, mida tegelikult külastasin oli `https://www.google.ee/?hl=et`.
 * Otsingu sooritamine ebaõnnestus WebKit-iga, sest Google kuvas reCaptcha märkeruudu otsingulehe asemel
+* Välistava filtriga test ebaõnnestus mingil tundmatul põhjusel, välistavad märksõnad olid ikka otsingus
 
 ### Testide kokkuvõta
-* TBD
+* Teste kokku: 21 (üle mitme brauseri)
+* Ebaõnnestus 6
+
+### Ebaõnnestunud testid
+* Pildiotsing › sisestades mingisuguse märksõna, peaksid ilmuma sellele vastavad pildid (brauser: chromium)
+  * Piltide arv jäi alla 10, ilmselt ei jõutud piltide otsingulehele
+* Otsing filtritega › sisestades mingi märksõna ning jättes teatud märksõnad välja lisades neile "-" prefiksi, ei tohiks otsingulehele jääda tulemusi, mis sisaldavad välistatud märksõnu (kõik brauserid)
+  * Tundmatu põhjus, välistatud märksõnad olid ikka otsingutulemustes
